@@ -17,6 +17,8 @@ buttons.forEach((button) => {
     } else if (button.id === "eraser") {
       eraser();
       button.classList.add("dark");
+    } else if (button.id === "clear"){
+      clear()
     }
   });
 });
@@ -82,12 +84,20 @@ function eraser() {
   grids.forEach((grid) => {
     grid.addEventListener('mouseover', () => {
       grid.style.backgroundColor = whiteEraser;
-  
+
     });
   });
 };
 
+function clear() {
+  const childArray = Array.from(container.childNodes);
 
+  childArray.forEach(child => {
+    container.removeChild(child);
+  });
+  createGrid()
+
+}
 
 
 createGrid();
